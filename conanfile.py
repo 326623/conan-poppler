@@ -9,10 +9,10 @@ import shutil
 
 class LibpopplerConan(ConanFile):
     name = "poppler"
-    version = "0.73.0"
+    version = "0.86.0"
     description = "Poppler is a PDF rendering library based on the xpdf-3.0 code base"
     topics = ("conan", "libpoppler", "poppler", "pdf")
-    url = "https://github.com/zehome/conan-poppler"
+    url = "https://github.com/326623/conan-poppler"
     homepage = "https://poppler.freedesktop.org/"
     author = "Laurent Coustet <ed@zehome.com>"
     license = "GPL-3.0-only"
@@ -45,11 +45,12 @@ class LibpopplerConan(ConanFile):
 
     requires = (
         "zlib/1.2.11@conan/stable",
-        "libpng/1.6.36@bincrafters/stable",
+        "libpng/1.6.37@bincrafters/stable",
         "libjpeg/9c@bincrafters/stable",
         "openjpeg/2.3.0@bincrafters/stable",
         "libtiff/4.0.9@bincrafters/stable",
-        "freetype/2.9.1@clarisys/stable",
+        "freetype/2.10.0@bincrafters/stable",
+        "bzip2/1.0.6@conan/stable",
     )
 
     def config_options(self):
@@ -60,7 +61,7 @@ class LibpopplerConan(ConanFile):
         if self.options.with_lcms:
             self.requires.add("lcms/2.9@bincrafters/stable")
         if self.options.with_qt:
-            self.requires.add("qt/5.12.0@clarisys/stable")
+            self.requires.add("qt/5.14.1@bincrafters/stable")
         if self.settings.os != "Windows" and self.options.with_cairo:
             self.requires.add("cairo/1.15.14@bincrafters/stable")
             self.requires.add("glib/2.56.1@bincrafters/stable")
@@ -70,7 +71,6 @@ class LibpopplerConan(ConanFile):
             self.requires.add("libcurl/7.61.1@bincrafters/stable")
         # if self.settings.os != "Windows":
         #     self.requires.add("fontconfig/2.13.1@clarisys/stable")
-
 
     def source(self):
         source_url = "https://poppler.freedesktop.org/"
