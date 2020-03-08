@@ -40,6 +40,9 @@ class LibpopplerConan(ConanFile):
         # "cairo:shared=False",
         # "glib:shared=False",
         # "libcurl:shared=False", "OpenSSL:shared=False",
+        "freetype:shared=True",
+        "libtiff:shared=True",
+        "bzip2:shared=True",
         # "freetype:with_bzip2=True",
         "qt:opengl=desktop", "qt:qtxmlpatterns=True", "qt:shared=True",
     )
