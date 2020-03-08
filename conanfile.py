@@ -40,6 +40,7 @@ class LibpopplerConan(ConanFile):
         # "cairo:shared=False",
         # "glib:shared=False",
         # "libcurl:shared=False", "OpenSSL:shared=False",
+        # "freetype:with_bzip2=True",
         "qt:opengl=desktop", "qt:qtxmlpatterns=True", "qt:shared=True",
     )
 
@@ -49,7 +50,7 @@ class LibpopplerConan(ConanFile):
         "libjpeg/9c@bincrafters/stable",
         "openjpeg/2.3.0@bincrafters/stable",
         "libtiff/4.0.9@bincrafters/stable",
-        "freetype/2.10.0@bincrafters/stable",
+        "freetype/2.9.1@bincrafters/stable",
         "bzip2/1.0.6@conan/stable",
     )
 
@@ -104,6 +105,10 @@ class LibpopplerConan(ConanFile):
         return cmake
 
     def build(self):
+        # self.run('pacman -Sy --noconfirm', win_bash=True)
+        # self.run('pacman --needed -S bash pacman msys2-runtime --noconfirm', win_bash=True)
+        # self.run('pacman -Su --noconfirm', win_bash=True)
+        # self.run("pacman -S mingw-w64-x86_64-pkg-config --noconfirm", win_bash=True)
         cmake = self._configure_cmake()
         #shutil.rmtree(os.path.join(self._source_subfolder, 'cmake'))
         cmake.build()
